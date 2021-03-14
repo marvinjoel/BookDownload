@@ -25,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'book:home'%}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Books</a>
+                        <a class="nav-link" href="{% url 'book:book_all'%}">Libros</a>
                     </li>
 
                 </ul>
@@ -59,7 +59,7 @@
 
     <p uk-margin style = "width: 80%; margin: auto; margin-top: 20px">
         {% for category in categories %}
-        <a class="uk-button uk-button-default" href=""><strong>{{ category.name }}</strong></a>
+        <a class="uk-button uk-button-default" href="{% url 'book:category_detail' category.slug %}"><strong>{{ category.name }}</strong></a>
         {% endfor %}
     </p>
     <br><br>
@@ -69,7 +69,6 @@
     <footer>
         <h4><strong>Enjoy Your Day With Free Fascinating Books</strong></h4>
     </footer>
-
 
 
 <!-- JavaScript Bundle with Popper -->

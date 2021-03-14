@@ -36,4 +36,14 @@ class BookModel(models.Model):
         verbose_name_plural = 'Books'
         ordering = ['id']
 
-    
+
+class BookSearchModel(models.Model):
+    name_of_book = models.CharField(max_length=100, verbose_name='Nombre del Libro')
+
+    def __str__(self):
+        return self.name_of_book
+
+    class Meta:
+        verbose_name='Book-Search'
+        verbose_name_plural = 'Book-Searchs'
+        ordering = ['id']
