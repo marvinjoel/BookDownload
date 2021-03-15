@@ -35,3 +35,11 @@ class BookDetail(View):
         similar_books = BookModel.objects.filter(category__name__startswith=book_category)
         return render(request, self.template, dict(book=book, similar_books=similar_books))
 
+
+
+class SearchBook(View):
+    template = 'search_book.html'
+    def post(self, request):
+        search_book = BookModel.objects.filter(title__icontains = request.POST.get('name_of_book'))
+        return render(request, self.template,dict(search_book=search_book))
+

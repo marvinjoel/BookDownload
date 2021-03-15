@@ -1,14 +1,18 @@
 from django.views import View
 
+from apps.bookapp.form import BookSearchForm
 from apps.bookapp.models import CategoryModel
-
-#Llevar en el setting , templates
-# class Category_Links(View):
-#     def get(self, request):
-#         category = CategoryModel.objects.all()
-#         return {'categories':category}
 
 
 def category_links(request):
     category = CategoryModel.objects.all()
     return {'categories':category}
+
+
+def boo_forms(request):
+    search_form = BookSearchForm()
+    if request.method=='POST':
+        search_form = BookSearchForm(request.POST)
+        if search_form.is_valid():
+            search_form.save()
+    return {'search_form':search_form}

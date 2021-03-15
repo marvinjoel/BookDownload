@@ -32,8 +32,9 @@
                     </li>
 
                 </ul>
-                <form class="d-flex" action = "" method="POST" style = 'margin: 0px 150px 0px 150px'>
-                    <input type="text" class="form-control">
+                <form class="d-flex" method="post" action="{% url 'book:book_search'%}" style = 'margin: 0px 150px 0px 150px' >
+                    {% csrf_token %}
+                    {{ search_form }}
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div style = 'width: auto; display: flex'>

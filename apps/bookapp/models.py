@@ -43,7 +43,7 @@ class BookSearchModel(models.Model):
     def __str__(self):
         return self.name_of_book
 
-    class Meta:
-        verbose_name='Book-Search'
-        verbose_name_plural = 'Book-Searchs'
-        ordering = ['id']
+    # class Meta:
+    #     verbose_name='Book-Search'
+    #     verbose_name_plural = 'Book-Searchs'
+    #     ordering = ['id']
