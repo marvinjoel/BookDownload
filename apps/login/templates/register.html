@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+
+
+{% block content %}
+    <div id="container">
+        <div class="header">
+            <h2>Nuevo Usuario</h2>
+        </div>
+        <form method="post" class="mt-2" autocomplete="off">
+            {% csrf_token %}
+            {% for register in register_form %}
+                {{ register.label }}
+                {{ register }}
+            {% endfor %}
+            <button type="submit" id="submitButton">Registrar</button>
+        </form>
+    </div>
+
+{% endblock %}
