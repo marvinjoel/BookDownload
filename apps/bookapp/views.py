@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 
 from apps.bookapp.models import BookModel, CategoryModel
@@ -29,6 +31,7 @@ class Category_detail(View):
 
 class BookDetail(View):
     template = 'book_detail.html'
+    @method_decorator(login_required(login_url='/login/'))
     def get(self, request, pk):
         book = BookModel.objects.get(pk=pk)
         book_category = book.category.first()

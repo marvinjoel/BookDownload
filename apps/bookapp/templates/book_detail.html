@@ -19,7 +19,7 @@
                     <h4>{{ book.summary }}</h4>
 
 
-                    <a href = '' download="">
+                    <a href = '{{ book.pdf.url }}' download="{{ book.pdf.url }}">
                     <button id = 'download'>
                         Download PDF
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -36,7 +36,7 @@
 
     <div class = 'container'>
         <div class = 'row'>
-            <h4>Similar Books</h4>
+            <h4>Libros Similares</h4>
         </div>
         <div class = 'row'>
 
