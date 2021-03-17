@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -24,3 +25,11 @@ class RegisterView(View):
             for msg in register_form.error_messages:
                 messages.error(request, register_form.error_messages[msg])
             return render(request, self.template, dict(register_form=register_form))
+
+
+class AccederView(LoginView):
+    template_name = 'login.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+

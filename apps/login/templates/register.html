@@ -1,20 +1,78 @@
 {% extends "base/base.html" %}
 
+{% block title %}Registrar{% endblock %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'login-style/fonts/material-icon/css/material-design-iconic-font.min.css'%} ">
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'login-style/css/style.css' %}  ">
+{% endblock %}
 
 
 {% block content %}
-    <div id="container">
-        <div class="header">
-            <h2>Nuevo Usuario</h2>
-        </div>
-        <form method="post" class="mt-2" autocomplete="off">
-            {% csrf_token %}
-            {% for register in register_form %}
-                {{ register.label }}
-                {{ register }}
-            {% endfor %}
-            <button type="submit" id="submitButton">Registrar</button>
-        </form>
+    <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Registro</h2>
+                        <form method="POST" class="register-form" id="register-form" autocomplete="off">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {{ register_form.username }}
+<!--                                <input type="text" name="name" id="name" placeholder="Nombre"/>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                {{ register_form.email }}
+<!--                                <input type="email" name="email" id="email" placeholder="Email"/>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                {{ register_form.password1 }}
+<!--                                <input type="password" name="pass" id="pass" placeholder="Password"/>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                {{ register_form.password2 }}
+<!--                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>-->
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
+                                <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'login-style/images/signup-image.jpg' %} " alt="sing up image"></figure>
+
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+
+
+
+
+<!--    <div id="container">-->
+<!--        <div class="header">-->
+<!--            <h2>Nuevo Usuario</h2>-->
+<!--        </div>-->
+<!--        <form method="post" class="mt-2" autocomplete="off">-->
+<!--            {% csrf_token %}-->
+<!--            {% for register in register_form %}-->
+<!--                {{ register.label }}-->
+<!--                {{ register }}-->
+<!--            {% endfor %}-->
+<!--            <button type="submit" id="submitButton">Registrar</button>-->
+<!--        </form>-->
+<!--    </div>-->
 
 {% endblock %}
