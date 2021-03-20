@@ -1,8 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.views.generic import CreateView
 
+from apps.bookapp.form import RegisterForm
 from apps.bookapp.models import BookModel, CategoryModel
 
 
@@ -46,3 +49,11 @@ class SearchBook(View):
         search_book = BookModel.objects.filter(title__icontains = request.POST.get('name_of_book'))
         return render(request, self.template,dict(search_book=search_book))
 
+
+
+#Subir archivos
+class CreateRegister(CreateView):
+    model = BookModel
+    form_class = RegisterForm
+    template_name = 'create.html'
+    success_url = reverse_lazy('book:book_register')

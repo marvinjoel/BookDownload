@@ -33,7 +33,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'book:book_all'%}">Libros</a>
                     </li>
-
                 </ul>
                 <form class="d-flex" method="post" action="{% url 'book:book_search'%}" style = 'margin: 0px 150px 0px 150px' >
                     {% csrf_token %}
@@ -67,12 +66,14 @@
         </div>
     </nav>
 
-    <p uk-margin style = "width: 80%; margin: auto; margin-top: 20px">
-        {% for category in categories %}
-        <a class="uk-button uk-button-default" href="{% url 'book:category_detail' category.slug %}"><strong>{{ category.name }}</strong></a>
-        {% endfor %}
-    </p>
-    <br><br>
+    <div class="d-flex justify-content-center">
+        <div class="button-group">
+                {% for category in categories %}
+                    <a type="button" href="{% url 'book:category_detail' category.slug %}" class="btn waves-effect waves-light btn-outline-success">{{ category.name }}</a>
+                {% endfor %}
+        </div>
+    </div>
+    <br>
 <!--    contenido-->
     {% block content %} {% endblock %}
 
@@ -82,6 +83,8 @@
 
 
 <!-- JavaScript Bundle with Popper -->
+    {% block javascript %} {% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
 </html>
