@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from django.forms import *
 
 
-class CreatUserForm(UserCreationForm):
-
+class CreateUserForm(UserCreationForm):
+    password1 = CharField(max_length=100, widget=PasswordInput(attrs={'placeholder': 'Contraseña'}))
+    password2 = CharField(max_length=100, widget=PasswordInput(attrs={'placeholder': 'Repetir Contraseña'}))
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
@@ -14,15 +15,7 @@ class CreatUserForm(UserCreationForm):
                 'placeholder':'Usuario'
             }),
             'email': EmailInput(attrs={
-                'placeholder': 'Correo electrónico',
-                'required':'true',
-                'maxlength':'10',
+                'placeholder': 'Correo electrónico'
+            }),
 
-            }),
-            'password1': PasswordInput(attrs={
-                'placeholder': 'Password'
-            }),
-            'password2': PasswordInput(attrs={
-                'placeholder': 'Repetir Password'
-            }),
         }

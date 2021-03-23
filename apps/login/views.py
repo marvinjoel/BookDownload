@@ -6,25 +6,42 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 
-from apps.login.forms import CreatUserForm
+from apps.login.forms import CreateUserForm
 
 
-class RegisterView(View):
-    template = 'register.html'
-    def get(self, request):
-        register_form = CreatUserForm
-        return render(request, self.template, dict(register_form=register_form))
 
-    def post(self, request):
-        register_form = UserCreationForm(request.POST)
+
+
+
+def register_page(request):
+    register_form = CreateUserForm
+    if request.method == 'POST':
+        register_form = CreateUserForm(request.POST)
         if register_form.is_valid():
             register_form.save()
-            messages.info(request, 'Cuenta creada!')
-            return redirect('book:home')
-        else:
-            for msg in register_form.error_messages:
-                messages.error(request, register_form.error_messages[msg])
-            return render(request, self.template, dict(register_form=register_form))
+    return render(request, 'register.html', {'register_form':register_form})
+
+
+# class RegisterView(View):
+#     template = 'register.html'
+#     def get(self, request):
+#         register_form = CreatUserForm
+#         return render(request, self.template, dict(register_form=register_form))
+#
+#     def post(self, request):
+#         register_form = UserCreationForm(request.POST)
+#         if register_form.is_valid():
+#             register_form.save()
+#             messages.info(request, 'Cuenta creada!')
+#             return redirect('book:home')
+#         else:
+#             for msg in register_form.error_messages:
+#                 messages.error(request, register_form.error_messages[msg])
+#             return render(request, self.template, dict(register_form=register_form))
+
+
+
+
 
 
 class AccederView(LoginView):

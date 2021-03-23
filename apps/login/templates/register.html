@@ -20,33 +20,42 @@
                         <h2 class="form-title">Registro</h2>
                         <form method="POST" class="register-form" id="register-form" autocomplete="off">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                {{ register_form.username }}
-<!--                                <input type="text" name="name" id="name" placeholder="Nombre"/>-->
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                {{ register_form.email }}
-<!--                                <input type="email" name="email" id="email" placeholder="Email"/>-->
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                {{ register_form.password1 }}
-<!--                                <input type="password" name="pass" id="pass" placeholder="Password"/>-->
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                {{ register_form.password2 }}
-<!--                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>-->
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
-                                <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>
-                            </div>
+
+                            {% for forms in register_form %}
+                            {{ forms.label }}
+
+                            {{ forms }}
+                            {{ forms.errors }}
+                            {% endfor %}
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
+
+                            <!--                            <div class="form-group">-->
+<!--                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
+<!--                                {{ register_form.username }}-->
+<!--&lt;!&ndash;                                <input type="text" name="name" id="name" placeholder="Nombre"/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email"><i class="zmdi zmdi-email"></i></label>-->
+<!--                                {{ register_form.email }}-->
+<!--&lt;!&ndash;                                <input type="email" name="email" id="email" placeholder="Email"/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>-->
+<!--                                {{ register_form.password1 }}-->
+<!--&lt;!&ndash;                                <input type="password" name="pass" id="pass" placeholder="Password"/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>-->
+<!--                                {{ register_form.password2 }}-->
+<!--&lt;!&ndash;                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />-->
+<!--                            </div>-->
+<!--                            <div class="form-group form-button">-->
+<!--                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>-->
+<!--                                <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>-->
+<!--                            </div>-->
                         </form>
                     </div>
                     <div class="signup-image">

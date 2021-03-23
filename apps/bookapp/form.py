@@ -18,6 +18,9 @@ class BookSearchForm(ModelForm):
 
 
 class RegisterForm(ModelForm):
+    pdf = CharField(widget=FileInput(attrs = {'type': 'file', 'accept': '.pdf', 'id': 'upload-pdf', 'style': 'display: none'}))
+    cover_image = CharField(widget=FileInput(attrs={'type':'file','accept':'image/jpeg, image/png','id':'upload-front-pdf','style':'display: none'}))
+    # category = CharField(widget=TextInput(attrs={'class':'custom-select','id':'category-pdf'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -25,7 +28,13 @@ class RegisterForm(ModelForm):
         for form in self.visible_fields():
             form.field.widget.attrs['class']='form-control'
             form.field.widget.attrs['autocomplete']='off'
-        self.fields['cover_image'].widget.attrs['class']='form-control'
+        self.fields['backend_books'].widget.attrs['class']='form-check-input'
+        self.fields['frontend_books'].widget.attrs['class']='form-check-input'
+        self.fields['datascience_books'].widget.attrs['class']='form-check-input'
+        self.fields['title'].widget.attrs['placeholder']='Ejem: PHP, React, Python, Laravel'
+        self.fields['author'].widget.attrs['placeholder']='Ejem: Mark Tielens Thomas'
+        self.fields['summary'].widget.attrs['placeholder']='Una corta descripción del libro...'
+
 
     class Meta:
         model = BookModel
@@ -40,3 +49,15 @@ class RegisterForm(ModelForm):
             'frontend_books',
             'datascience_books',
         ]
+
+        widgets = {
+            'summary':Textarea(attrs={'rows':'3'}),
+            # 'category':
+            'backend_books':CheckboxInput(attrs={'id':'flexCheckDefault'}),
+            'frontend_books':CheckboxInput(attrs={'id':'flexCheckChecked'}),
+            'datascience_books':CheckboxInput(attrs={'id':'flexCheckCheckedes'}),
+            'pdf': FileField(),
+            'cover_image':ImageField(),
+        }
+        # attrs = {'type': 'file', 'accept': '.pdf', 'id': 'upload-pdf', 'style': 'display: none'}
+# attrs={'type':'file','accept':'image/jpeg, image/png','id':'upload-front-pdf','style':'display: none'}
