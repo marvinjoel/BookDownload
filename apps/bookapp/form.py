@@ -18,9 +18,8 @@ class BookSearchForm(ModelForm):
 
 
 class RegisterForm(ModelForm):
-    pdf = CharField(widget=FileInput(attrs = {'type': 'file', 'accept': '.pdf', 'id': 'upload-pdf', 'style': 'display: none'}))
-    cover_image = CharField(widget=FileInput(attrs={'type':'file','accept':'image/jpeg, image/png','id':'upload-front-pdf','style':'display: none'}))
-    # category = CharField(widget=TextInput(attrs={'class':'custom-select','id':'category-pdf'}))
+    pdf = Field(widget=FileInput(attrs = {'id': 'upload-pdf','type': 'file', 'accept': '.pdf','style': 'display: none'}))
+    cover_image = Field(widget=FileInput(attrs={'type':'file','accept':'image/jpeg, image/png','id':'upload-front-pdf','style':'display: none'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -52,12 +51,17 @@ class RegisterForm(ModelForm):
 
         widgets = {
             'summary':Textarea(attrs={'rows':'3'}),
-            # 'category':
+            'category':SelectMultiple(attrs=
+                              {'id':'selectpicker',
+                               'multiple':'true',
+                               'title':'Selección Multiple',
+                               'data-live-search':'true'
+                               }),
             'backend_books':CheckboxInput(attrs={'id':'flexCheckDefault'}),
             'frontend_books':CheckboxInput(attrs={'id':'flexCheckChecked'}),
             'datascience_books':CheckboxInput(attrs={'id':'flexCheckCheckedes'}),
             'pdf': FileField(),
             'cover_image':ImageField(),
         }
-        # attrs = {'type': 'file', 'accept': '.pdf', 'id': 'upload-pdf', 'style': 'display: none'}
-# attrs={'type':'file','accept':'image/jpeg, image/png','id':'upload-front-pdf','style':'display: none'}
+
+    # <select id = "framework"  name = "frameworl" class ="form-control selectpicker" multiple >
