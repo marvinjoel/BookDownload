@@ -7,6 +7,159 @@
     <link rel="stylesheet" href="{% static 'login-style/fonts/material-icon/css/material-design-iconic-font.min.css'%} ">
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'login-style/css/style.css' %}  ">
+    <style>
+
+
+.formulario {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.formulario__label {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.formulario__grupo-input {
+	position: relative;
+}
+
+.formulario__input {
+	width: 100%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formulario__input:focus {
+	border: 3px solid #0075FF;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formulario__input-error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+}
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+.formulario__validacion-estado {
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+
+.formulario__checkbox {
+	margin-right: 10px;
+}
+
+.formulario__grupo-terminos,
+.formulario__mensaje,
+.formulario__grupo-btn-enviar {
+	grid-column: span 2;
+}
+
+.formulario__mensaje {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.formulario__mensaje-activo {
+	display: block;
+}
+
+.formulario__mensaje p {
+	margin: 0;
+}
+
+.formulario__grupo-btn-enviar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formulario__btn {
+	height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formulario__btn:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formulario__mensaje-exito-activo {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
+
+
+/* ----- -----  Mediaqueries ----- ----- */
+@media screen and (max-width: 800px) {
+	.formulario {
+		grid-template-columns: 1fr;
+	}
+
+	.formulario__grupo-terminos,
+	.formulario__mensaje,
+	.formulario__grupo-btn-enviar {
+		grid-column: 1;
+	}
+
+	.formulario__btn {
+		width: 100%;
+	}
+}
+    </style>
 {% endblock %}
 
 
@@ -21,41 +174,50 @@
                         <form method="POST" class="register-form" id="register-form" autocomplete="off">
                             {% csrf_token %}
 
-                            {% for forms in register_form %}
-                            {{ forms.label }}
 
-                            {{ forms }}
-                            {{ forms.errors }}
-                            {% endfor %}
-                            <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
+                            <div class="form-group formulario__grupo" id="grupo__username">
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 
-                            <!--                            <div class="form-group">-->
-<!--                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
-<!--                                {{ register_form.username }}-->
-<!--&lt;!&ndash;                                <input type="text" name="name" id="name" placeholder="Nombre"/>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="email"><i class="zmdi zmdi-email"></i></label>-->
-<!--                                {{ register_form.email }}-->
-<!--&lt;!&ndash;                                <input type="email" name="email" id="email" placeholder="Email"/>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>-->
-<!--                                {{ register_form.password1 }}-->
-<!--&lt;!&ndash;                                <input type="password" name="pass" id="pass" placeholder="Password"/>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>-->
-<!--                                {{ register_form.password2 }}-->
-<!--&lt;!&ndash;                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />-->
-<!--                            </div>-->
-<!--                            <div class="form-group form-button">-->
-<!--                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>-->
-<!--                                <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>-->
-<!--                            </div>-->
+                                <label for="name" class="formulario__label"></label>
+                                <div class="formulario__grupo-input">
+                                    {{ register_form.username }}
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                </div>
+                            </div>
+
+
+<!--                            <div class="formulario__grupo" id="grupo__username">-->
+<!--                                    <label for="usuario" class="formulario__label">Usuario</label>-->
+<!--                                    <div class="formulario__grupo-input">-->
+<!--                                        <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="john123">-->
+<!--                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>-->
+<!--                                    </div>-->
+<!--                                    <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
+<!--                                </div>-->
+
+
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                {{ register_form.email }}
+<!--                                <input type="email" name="email" id="email" placeholder="Email"/>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                {{ register_form.password1 }}
+<!--                                <input type="password" name="pass" id="pass" placeholder="Password"/>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                {{ register_form.password2 }}
+<!--                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>-->
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
+                                <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>
+                            </div>
                         </form>
                     </div>
                     <div class="signup-image">
@@ -83,5 +245,9 @@
 <!--            <button type="submit" id="submitButton">Registrar</button>-->
 <!--        </form>-->
 <!--    </div>-->
+
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/registerBookV.js' %}"></script>
 
 {% endblock %}

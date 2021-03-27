@@ -9,39 +9,32 @@ from django.views import View
 from apps.login.forms import CreateUserForm
 
 
+# def register_page(request):
+#     register_form = CreateUserForm
+#     if request.method == 'POST':
+#         register_form = CreateUserForm(request.POST)
+#         if register_form.is_valid():
+#             register_form.save()
+#     return render(request, 'register.html', {'register_form':register_form})
 
 
+class RegisterUserView(View):
+    template = 'register.html'
 
+    def get(self, request):
+        register_form = CreateUserForm
+        return render(request, self.template, dict(register_form=register_form))
 
-def register_page(request):
-    register_form = CreateUserForm
-    if request.method == 'POST':
+    def post(self, request):
         register_form = CreateUserForm(request.POST)
         if register_form.is_valid():
             register_form.save()
-    return render(request, 'register.html', {'register_form':register_form})
-
-
-# class RegisterView(View):
-#     template = 'register.html'
-#     def get(self, request):
-#         register_form = CreatUserForm
-#         return render(request, self.template, dict(register_form=register_form))
-#
-#     def post(self, request):
-#         register_form = UserCreationForm(request.POST)
-#         if register_form.is_valid():
-#             register_form.save()
-#             messages.info(request, 'Cuenta creada!')
-#             return redirect('book:home')
-#         else:
-#             for msg in register_form.error_messages:
-#                 messages.error(request, register_form.error_messages[msg])
-#             return render(request, self.template, dict(register_form=register_form))
-
-
-
-
+            messages.success(request, 'Cuenta creada!')
+            return redirect('book:home')
+        else:
+            for msg in register_form.error_messages:
+                messages.error(register_form.error_messages[msg])
+            return render(request, self.template, dict(register_form=register_form))
 
 
 class AccederView(LoginView):

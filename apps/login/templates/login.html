@@ -24,6 +24,19 @@
                         <h2 class="form-title">Ingresar</h2>
                         <form method="POST" class="register-form" id="login-form">
                             {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger alert-dismissible">
+                                    <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
+                                    <h5><i class="icon fas fa-ban"></i>Error! revise su usuario o contraseña</h5>
+                                    <ul>
+                                        {% for field in form %}
+                                            {% for error in field.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
 <!--                                <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>-->
