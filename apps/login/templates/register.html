@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'login-style/fonts/material-icon/css/material-design-iconic-font.min.css'%} ">
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'login-style/css/style.css' %}  ">
-    <style>
+<style>
 
 
 .formulario {
@@ -16,8 +16,10 @@
 	gap: 20px;
 }
 
+<!--se cambio-->
 .formulario__label {
-	display: block;
+<!--	display: block;-->
+	display: none;
 	font-weight: 700;
 	padding: 10px;
 	cursor: pointer;
@@ -38,11 +40,15 @@
 	transition: .3s ease all;
 }
 
+
+
 .formulario__input:focus {
 	border: 3px solid #0075FF;
 	outline: none;
 	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
+
+
 
 .formulario__input-error {
 	font-size: 12px;
@@ -53,6 +59,9 @@
 .formulario__input-error-activo {
 	display: block;
 }
+
+
+
 
 .formulario__validacion-estado {
 	position: absolute;
@@ -89,6 +98,13 @@
 .formulario__mensaje p {
 	margin: 0;
 }
+
+
+
+
+
+
+
 
 .formulario__grupo-btn-enviar {
 	display: flex;
@@ -160,6 +176,7 @@
 	}
 }
     </style>
+
 {% endblock %}
 
 
@@ -175,48 +192,64 @@
                             {% csrf_token %}
 
 
-                            <div class="form-group formulario__grupo" id="grupo__username">
-                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+<!--                            <div class="form-group formulario__grupo" id="grupo__username">-->
+<!--                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
 
-                                <label for="name" class="formulario__label"></label>
-                                <div class="formulario__grupo-input">
-                                    {{ register_form.username }}
-                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                </div>
-                            </div>
-
-
-<!--                            <div class="formulario__grupo" id="grupo__username">-->
-<!--                                    <label for="usuario" class="formulario__label">Usuario</label>-->
-<!--                                    <div class="formulario__grupo-input">-->
-<!--                                        <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="john123">-->
-<!--                                        <i class="formulario__validacion-estado fas fa-times-circle"></i>-->
-<!--                                    </div>-->
-<!--                                    <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>-->
+<!--                                <label for="name" class="formulario__label"></label>-->
+<!--                                <div class="formulario__grupo-input">-->
+<!--                                    {{ register_form.username }}-->
+<!--                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>-->
 <!--                                </div>-->
+<!--                            </div>-->
+
+                            <div class="form-group" id="grupo__username">
+                                <div style="position: sticky">
+                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    {{ register_form.username }}
+                                </div>
+                                <p class="formulario__label formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                            </div>
 
 
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                {{ register_form.email }}
-<!--                                <input type="email" name="email" id="email" placeholder="Email"/>-->
+                            <div class="form-group" id="grupo__email">
+                                <div style="position: sticky">
+                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                    {{ register_form.email }}
+                                </div>
+                                <p class="formulario__label formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
                             </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                {{ register_form.password1 }}
-<!--                                <input type="password" name="pass" id="pass" placeholder="Password"/>-->
+
+
+
+
+
+                            <div class="form-group" id="grupo__password1">
+                                <div style="position: sticky">
+                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    {{ register_form.password1 }}
+                                </div>
+                                <p class="formulario__label formulario__input-error">La contraseña debe tener al entre 8 y 16 caracteres, al menos un número, al menos una minúscula y al menos una mayúscula.</p>
                             </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                {{ register_form.password2 }}
-<!--                                <input type="password" name="re_pass" maxlength="100" id="re_pass" placeholder="Repetir password"/>-->
+
+                            <!-- Grupo: Contraseña 2 -->
+                            <div class="form-group" id="grupo__password2">
+                                <div style="position: sticky">
+                                    <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                    {{ register_form.password2 }}
+                                </div>
+                                <p class="formulario__label formulario__input-error">Ambas contraseñas deben ser iguales.</p>
                             </div>
+
+
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Registrar"/>
                                 <a href="{% url 'book:home'%}" class="btn form-cancel" >Cancelar</a>
+                            </div>
+                            <div class="formulario__mensaje" id="formulario__mensaje">
+                                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
                             </div>
                         </form>
                     </div>
@@ -248,6 +281,13 @@
 
 {% endblock %}
 {% block javascript %}
+
+
 <script src="{% static 'js/registerBookV.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<!--<script src="{% static 'js/bs4-form-validation.min.js' %}"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 
 {% endblock %}

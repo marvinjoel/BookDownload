@@ -13,7 +13,6 @@ class CreateUserForm(UserCreationForm):
         widgets = {
             'username': TextInput(attrs={
                 'placeholder':'Usuario',
-                'class':'formulario__input',
                 'id':'usuario'
             }),
             'email': EmailInput(attrs={
