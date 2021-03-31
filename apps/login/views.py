@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -28,8 +27,13 @@ class RegisterUserView(View):
     def post(self, request):
         register_form = CreateUserForm(request.POST)
         if register_form.is_valid():
-            register_form.save()
-            messages.success(request, 'Cuenta creada!')
+            usuario = register_form.save()
+            nombre_usuario = register_form.cleaned_data.get('username')
+            messages.info(request, f'Bienvenido {nombre_usuario}')
+            login(request, usuario)
+            # register_form.save()
+            # messages.info(request, 'Cuenta creada!')
+
             return redirect('book:home')
         else:
             for msg in register_form.error_messages:
