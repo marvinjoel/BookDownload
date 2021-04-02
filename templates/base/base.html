@@ -17,16 +17,17 @@
       {% endblock %}
 
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body style="background-color: #0C300E;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
         <div class="container-fluid">
             <div id = 'logo'>
-                <a href="https://t.me/GruposProgramadores"><img src = "{% static 'img/telegrama.png' %}"></a>
+                <a href="https://t.me/GruposProgramadores" target="_blank"><img src = "{% static 'img/telegrama.png' %}"></a>
             </div>
-            <a class="navbar-brand" href="https://t.me/GruposProgramadores">Telegram</a>
+            <a class="navbar-brand" href="https://t.me/GruposProgramadores" target="_blank">Telegram</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -67,11 +68,11 @@
             </div>
         </div>
     </nav>
-
+ <br>
     <div class="d-flex justify-content-center">
         <div class="button-group">
                 {% for category in categories %}
-                    <a type="button" href="{% url 'book:category_detail' category.slug %}" class="btn waves-effect waves-light btn-outline-success">{{ category.name }}</a>
+                    <a type="button" href="{% url 'book:category_detail' category.slug %}" class="btn waves-effect waves-light btn-outline-warning">{{ category.name }}</a>
                 {% endfor %}
         </div>
     </div>

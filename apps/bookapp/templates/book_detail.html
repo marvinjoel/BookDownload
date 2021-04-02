@@ -5,13 +5,13 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <div class="card mb-3" style="width:55em; top:0; bottom:0; ">
+<div class="container mt-7">
+    <div class="card mb-3 col-12" style="width:55em; top:0; bottom:0; ">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="{{ book.cover_image.url }}" class="card-img" alt="...">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" style="background-color: #020503;">
                 <div class="card-body">
                     <h3 class="card-title">{{ book.title }}</h3>
                     <h4 class="card-title">Autor: <strong>{{ book.author }}</strong></h4>
@@ -19,11 +19,7 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 
                 </div>
-                <div style="width: 100%;
-    height: 81px;
-    position: absolute;
-    bottom: -1em;
-    left: 11em;">
+                <div style="width: 100%; height: 81px; position: absolute; bottom: -1em; left: 11em;">
                     <a href = '{{ book.pdf.url }}' download="{{ book.pdf.url }}">
                         <button id = 'download'>
                             Descarga PDF
@@ -35,6 +31,8 @@
                     </a>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>
