@@ -78,6 +78,13 @@
     </div>
     <br>
 <!--    contenido-->
+<!--    REDES SOCIALES/-->
+    <ul>
+        <li><a href="{% url 'social:begin' 'facebook' %}">Signin With Facebook</a></li>
+        <li><a href="{% url 'social:begin' 'github' %}">Signin With Github</a></li>
+    </ul>
+
+
     {% block content %} {% endblock %}
 
     <footer>
@@ -90,7 +97,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     {% block javascript %} {% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
 
 </body>
 </html>

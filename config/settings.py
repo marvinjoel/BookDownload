@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.bookapp',
     'apps.login',
+    # redes sociales
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.bookapp.context_processors.category_links',
                 'apps.bookapp.context_processors.boo_forms',
+                # redes solciales
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -120,6 +125,29 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR, 'static')
+
+AUTHENTICATION_BACKENDS = [
+
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '771913133752975'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c5d426274f96458d1e827946d90d918e'
+
+
+SOCIAL_AUTH_GITHUB_KEY = 'b678885bea53cd99c53c'
+SOCIAL_AUTH_GITHUB_SECRET = '90efc14745c5a28656bf741ed779016dac548b4d'
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '78q8z0imvb3hqe'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'HQVCAQWBFmk3LXmX'
+
+
+
 
 LOGIN_REDIRECT_URL = '/book/home/'
 
