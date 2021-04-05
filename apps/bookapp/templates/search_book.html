@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class = 'container'>
-        <div class = 'row'><h4>Searched Book</h4></div>
+        <div class = 'row'><h4 class="color1">Searched Book</h4></div>
         <div class = 'row'>
             {% if search_book %}
                 {% for book in search_book %}
@@ -19,7 +19,7 @@
                 {% endfor %}
             {% else %}
                 <div class="row">
-                    <h3>Book Not available! Check Back Later</h3>
+                    <h3 class="notDis">Libro no disponible! Vuelva mas tarde</h3>
                 </div>
             {% endif %}
         </div>

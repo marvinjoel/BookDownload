@@ -6,20 +6,19 @@
 {% block content %}
 
 <div class="container mt-7">
-    <div class="card mb-3 col-12" style="width:55em; top:0; bottom:0; ">
+    <div class="card mb-3 detail1">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="{{ book.cover_image.url }}" class="card-img" alt="...">
             </div>
-            <div class="col-md-8" style="background-color: #020503;">
+            <div class="col-md-8 detail2">
                 <div class="card-body">
-                    <h3 class="card-title">{{ book.title }}</h3>
-                    <h4 class="card-title">Autor: <strong>{{ book.author }}</strong></h4>
-                    <p class="card-text" style="text-align: justify;">{{ book.summary }}.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
+                    <h3 class="card-title detail3">{{ book.title }}</h3>
+                    <h4 class="card-title detail4">Autor: <strong>{{ book.author }}</strong></h4>
+                    <p class="card-text detail5">{{ book.summary }}.</p>
                 </div>
-                <div style="width: 100%; height: 81px; position: absolute; bottom: -1em; left: 11em;">
+                <br><br>
+                <div class="text-center buttonpdf">
                     <a href = '{{ book.pdf.url }}' download="{{ book.pdf.url }}">
                         <button id = 'download'>
                             Descarga PDF
@@ -37,39 +36,10 @@
     </div>
 </div>
 
-<!--    <div class = 'container' style = 'border: 2px solid black; width: 80%'>-->
-<!--        <div class = 'row' style = 'border: 2px solid black'>-->
-<!--            <div class = 'col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4'>-->
-<!--                <div id = 'imageContainer'>-->
-<!--                    <img src='{{ book.cover_image.url }}'>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class = 'col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8'>-->
-<!--                <div id = 'summaryContent'>-->
-<!--                    <h1>{{ book.title }}</h1>-->
-<!--                    <h2>De: <strong>{{ book.author }}</strong></h2>-->
-<!--                    <h3>Resumen del Libro:</h3>-->
-<!--                    <h4>{{ book.summary }}</h4>-->
-
-
-<!--                    <a href = '{{ book.pdf.url }}' download="{{ book.pdf.url }}">-->
-<!--                    <button id = 'download'>-->
-<!--                        Download PDF-->
-<!--                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">-->
-<!--                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>-->
-<!--                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>-->
-<!--                          </svg>-->
-<!--                    </button>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
 
     <div class = 'container'>
         <div class = 'row'>
-            <h4>Libros Similares</h4>
+            <h4 class="color1">Libros Similares</h4>
         </div>
         <div class = 'row'>
 

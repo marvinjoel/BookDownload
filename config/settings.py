@@ -128,23 +128,21 @@ STATICFILES_DIRS = (BASE_DIR, 'static')
 
 AUTHENTICATION_BACKENDS = [
 
-    'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '771913133752975'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'c5d426274f96458d1e827946d90d918e'
 
 
 SOCIAL_AUTH_GITHUB_KEY = 'b678885bea53cd99c53c'
 SOCIAL_AUTH_GITHUB_SECRET = '90efc14745c5a28656bf741ed779016dac548b4d'
 
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '78q8z0imvb3hqe'
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'HQVCAQWBFmk3LXmX'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '348829594968-ieh3dq1flrkfdddq0us75bvf3t2e9ruh.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'y17E5IP_NTdsEUIqQuY9BvZr'
 
 
 

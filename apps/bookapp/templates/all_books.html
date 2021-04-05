@@ -4,7 +4,8 @@
 
 {% block content %}
     <div class="conteiner" style="padding-left: 0px">
-        <div class="row">
+        <div class="container">
+            <div class="row">
             {% for book in books %}
                 <div class="col-6 col-sm-4 col-md4 col-lg-3 col-xl-2">
                     <a href="{% url 'book:book_detail' book.id %}">
@@ -14,6 +15,7 @@
                     </a>
                 </div>
            {% endfor %}
+        </div>
         </div>
     </div>
 {% endblock %}

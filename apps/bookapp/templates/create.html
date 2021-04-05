@@ -10,7 +10,7 @@
 {% block content %}
 
 <div class="container">
-        <div class="card mt-3 mt-md-5 mb-3 mb-md-5">
+        <div class="card mt-3 mt-md-5 mb-3 mb-md-5" style="background-color: currentColor;">
             <div class="card-header">
 
             </div>
@@ -36,17 +36,17 @@
                 <!-- Title and author -->
                 <div class="row justify-content-md-center">
                     <div class="col-12 col-md-6">
-                        <label for="title-pdf" class="form-label">Titulo lenguaje de programacion o Framework</label>
+                        <label for="title-pdf" class="form-label colors1">Título lenguaje de programacion o Framework:</label>
                         {{ form.title }}
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="author-pdf" class="form-label">Autor del libro</label>
+                        <label for="author-pdf" class="form-label colors1">Autor del libro:</label>
                         {{ form.author }}
                     </div>
                 </div>
                 <!-- abstract -->
                 <div class="mt-3">
-                    <label for="abstract-pdf" class="form-label">Descripción</label>
+                    <label for="abstract-pdf" class="form-label colors1">Descripción:</label>
                     {{ form.summary }}
                 </div>
                 <div class="row">
@@ -58,20 +58,20 @@
                             </div>
                             <!-- section -->
                             <div class="col-12 mt-3">
-                                <label class="form-label">Sección</label>
+                                <label class="form-label colors1">Sección:</label>
                                 <div class="form-check">
                                     {{ form.backend_books }}
-                                  <label class="form-check-label" for="flexCheckDefault">
-                                    Libros de BackEnd
+                                  <label class="form-check-label colors1" for="flexCheckDefault">
+                                    Libros de BackEnd:
                                   </label>
                                 </div>
                                 <div class="form-check">
                                     {{ form.frontend_books }}
-                                  <label class="form-check-label" for="flexCheckChecked">Libros de FrontEnd</label>
+                                  <label class="form-check-label colors1" for="flexCheckChecked">Libros de FrontEnd:</label>
                                 </div>
                                 <div class="form-check form-switch">
                                     {{ form.datascience_books }}
-                                  <label class="form-check-label" for="flexCheckCheckedes">Libros de Ciencia de Datos</label>
+                                  <label class="form-check-label colors1" for="flexCheckCheckedes">Libros de Ciencia de Datos:</label>
                                 </div>
 
                             </div>
@@ -91,10 +91,10 @@
                         <div class="row justify-content-center">
                             <div class="col-auto">
                                 <div class="row justify-content-center">
-                                    <label class="form-label">Imagen de portada</label>
+                                    <label class="form-label colors1">Imagen de portada</label>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <img class="border rounded border-secondary" id="front-pdf" src="{% static 'img/PortadaLib.jpg' %}" width="200" alt="Portada del Libro">
+                                    <img class="border rounded border-secondary" id="front-pdf" src="{% static 'img/logo5.png' %}" width="200" alt="Portada del Libro">
                                 </div>
                                 <div class="row justify-content-center">
                                     <!-- btn select image -->
