@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Libro | {% block title %} {% endblock %}</title>
-
+<!--    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/ico.ico' %}" />-->
+    <link rel="icon" type="image/png" href="{% static 'img/logoico.png' %}" />
     <link rel = 'stylesheet' href ="{% static 'css/style.css' %}">
     <link rel = 'stylesheet' href ="{% static 'css/home.css' %}">
     <link rel = 'stylesheet' href ="{% static 'css/book_detail.css' %}">
     <link rel = 'stylesheet' href = "{% static 'uikit/css/uikit.css' %}">
-        <link rel = 'stylesheet' href ="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel = 'stylesheet' href ="{% static 'bootstrap/css/bootstrap.min.css' %}">
 
 {% block style %}
     <link rel = 'stylesheet' href ="{% static 'css/register.css' %}">
@@ -52,7 +53,7 @@
                                  {{ user.username }}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Upload Book</a></li>
+                                <li><a class="dropdown-item" href="{% url 'book:book_register'%}">Subir PDF</a></li>
                                 <li><a class="dropdown-item" href="{% url 'login:logout'%}">Cerrar Sessión</a></li>
                             </ul>
                         </div>

@@ -1,3 +1,4 @@
+
 from django.urls import path
 
 from apps.bookapp.views import HomeView, AllBook_View, Category_detail, BookDetail, SearchBook, \
@@ -13,3 +14,4 @@ urlpatterns = [
     path('search_book/', SearchBook.as_view(), name='book_search'),
     path('register/', CreateRegister.as_view(), name='book_register'),
 ]
+
