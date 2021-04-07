@@ -26,6 +26,8 @@ class BookModel(models.Model):
     backend_books = models.BooleanField(default=False, verbose_name='Libros de BackEnd')
     frontend_books = models.BooleanField(default=False, verbose_name='Libros de FrontEnd')
     datascience_books = models.BooleanField(default=False, verbose_name='Libros de Ciencia de Datos')
+    Data_books = models.BooleanField(default=False, verbose_name='Libros de Bases de Datos')
+    others_books = models.BooleanField(default=False, verbose_name='Otros')
 
     def __str__(self):
         return self.title

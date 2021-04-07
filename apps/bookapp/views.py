@@ -52,26 +52,32 @@ class SearchBook(View):
 
 
 #Subir archivos
-# @method_decorator(login_required(login_url='/login/'))
 class CreateRegister(CreateView):
     model = BookModel
     form_class = RegisterForm
     template_name = 'create.html'
     success_url = reverse_lazy('book:book_register')
 
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
-# class Error404View(TemplateView):
-#     template_name = 'home.html'
-#
-# class Error505View(TemplateView):
-#     template_name = 'home.html'
-#
-#     @classmethod
-#     def as_error_view(cls):
-#
-#         v = cls.as_view()
-#         def view(request):
-#             r = v(request)
-#             r.render()
-#             return r
-#         return view
+
+
+
+
+class Error404View(TemplateView):
+    template_name = 'home.html'
+
+class Error505View(TemplateView):
+    template_name = 'home.html'
+
+    @classmethod
+    def as_error_view(cls):
+
+        v = cls.as_view()
+        def view(request):
+            r = v(request)
+            r.render()
+            return r
+        return view

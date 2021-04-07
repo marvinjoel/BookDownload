@@ -30,6 +30,8 @@ class RegisterForm(ModelForm):
         self.fields['backend_books'].widget.attrs['class']='form-check-input'
         self.fields['frontend_books'].widget.attrs['class']='form-check-input'
         self.fields['datascience_books'].widget.attrs['class']='form-check-input'
+        self.fields['Data_books'].widget.attrs['class']='form-check-input'
+        self.fields['others_books'].widget.attrs['class']='form-check-input'
         self.fields['title'].widget.attrs['placeholder']='Ejem: PHP, React, Python, Laravel'
         self.fields['author'].widget.attrs['placeholder']='Ejem: Mark Tielens Thomas'
         self.fields['summary'].widget.attrs['placeholder']='Una corta descripción del libro...'
@@ -47,6 +49,8 @@ class RegisterForm(ModelForm):
             'backend_books',
             'frontend_books',
             'datascience_books',
+            'Data_books',
+            'others_books',
         ]
 
         widgets = {
@@ -60,6 +64,8 @@ class RegisterForm(ModelForm):
             'backend_books':CheckboxInput(attrs={'id':'flexCheckDefault'}),
             'frontend_books':CheckboxInput(attrs={'id':'flexCheckChecked'}),
             'datascience_books':CheckboxInput(attrs={'id':'flexCheckCheckedes'}),
+            'Data_books':CheckboxInput(attrs={'id':'flexCheckCheckedess'}),
+            'others_books':CheckboxInput(attrs={'id':'flexCheckCheckedesss'}),
             'pdf': FileField(),
             'cover_image':ImageField(),
         }
